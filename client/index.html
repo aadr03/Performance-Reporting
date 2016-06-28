@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script type="text/javascript">
+    // Your Client ID can be retrieved from your project in the Google
+      // Developer Console, https://console.developers.google.com
+      var CLIENT_ID = '790914204018-4pn4ionapd2neo0j09ii08hm1rlgefg9.apps.googleusercontent.com';
+
+      var SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"];
+
+      /**
+       * Check if current user has authorized this application.
+       */
+      function checkAuth() {
+        gapi.auth.authorize(
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+          }, handleAuthResult);
+      }
+</script>
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth">
+    </script>
+    <script src="googleauth.js" type ="text/javascript"> </script>
+  </head>
+  <body>
+    <div id="authorize-div" style="display: none">
+      <span>Authorize access to Google Sheets API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+    <div id="container">
+
+    </div>
+    <!--<pre id="output"></pre>-->
+  </body>
+</html>
